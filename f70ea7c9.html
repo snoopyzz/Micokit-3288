@@ -180,7 +180,7 @@
         function flm_stop() {
             var topic = device_id+'/in/write';
             //var commond = '{"rgbled_switch":true,"rgbled_hues":240, "rgbled_saturation":100, "rgbled_brightness":100}'; 
-            var commond = '{""rgbled_switch":true,"rgbled_hues":0, "rgbled_saturation":100, "rgbled_brightness":100, flm_control":2}';
+            var commond = '{""rgbled_switch":true,"rgbled_hues":0, "rgbled_saturation":100, "rgbled_brightness":100, "flm_control":2}';
             client.publish(topic, commond);
         }
         // document.querySelector('#flm_stop').addEventListener('touchstart', flm_stop);
