@@ -45,9 +45,9 @@
  </div>
 
  <div class="button-bar">
-     <a class="button" style="background:yellow; color:black" id="flm_play">Red</a>
-     <a class="button" style="background:yellow; color:black" id="flm_step">Green</a>
-     <a class="button" style="background:yellow; color:black" id="flm_stop">Blue</a>
+     <a class="button" style="background:yellow; color:black" id="flm_play">Play</a>
+     <a class="button" style="background:yellow; color:black" id="flm_step">Step</a>
+     <a class="button" style="background:yellow; color:black" id="flm_stop">Stop</a>
  </div>
  <div class="button-bar">
      <a class="button" style="background:white; color:black" id="led_on">On</a>
@@ -162,7 +162,7 @@
         function flm_play() {
             var topic = device_id+'/in/write';
             //var commond = '{"rgbled_switch":true,"rgbled_hues":0, "rgbled_saturation":100, "rgbled_brightness":100}'; 
-            var commond = '{"flm_control":1}';
+            var commond = '{"rgbled_switch":true,"rgbled_hues":120, "rgbled_saturation":100, "rgbled_brightness":100, "flm_control":1}';
             client.publish(topic, commond);
         }
         // document.querySelector('#flm_play').addEventListener('touchstart', flm_play);
@@ -171,7 +171,7 @@
         function flm_step() {
             var topic = device_id+'/in/write';
             //var commond = '{"rgbled_switch":true,"rgbled_hues":120, "rgbled_saturation":100, "rgbled_brightness":100}'; 
-            var commond = '{"flm_control":32}';
+            var commond = '{"rgbled_switch":true,"rgbled_hues":240, "rgbled_saturation":100, "rgbled_brightness":100, "flm_control":32}';
             client.publish(topic, commond);
         }
         // document.querySelector('#flm_step').addEventListener('touchstart', flm_step);
@@ -180,7 +180,7 @@
         function flm_stop() {
             var topic = device_id+'/in/write';
             //var commond = '{"rgbled_switch":true,"rgbled_hues":240, "rgbled_saturation":100, "rgbled_brightness":100}'; 
-            var commond = '{"flm_control":2}';
+            var commond = '{""rgbled_switch":true,"rgbled_hues":0, "rgbled_saturation":100, "rgbled_brightness":100, flm_control":2}';
             client.publish(topic, commond);
         }
         // document.querySelector('#flm_stop').addEventListener('touchstart', flm_stop);
