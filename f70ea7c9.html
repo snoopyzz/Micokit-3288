@@ -45,6 +45,11 @@
  </div>
 
  <div class="button-bar">
+     <a class="button" style="background:yellow; color:black" id="time_1">10 min</a>
+     <a class="button" style="background:yellow; color:black" id="time_2">15 min</a>
+     <a class="button" style="background:yellow; color:black" id="time_3">20 min</a>
+ </div>
+ <div class="button-bar">
      <a class="button" style="background:yellow; color:black" id="flm_play">Play</a>
      <a class="button" style="background:yellow; color:black" id="flm_step">Step</a>
      <a class="button" style="background:yellow; color:black" id="flm_stop">Stop</a>
@@ -135,7 +140,7 @@
         function send2uart() {
             if ( inputMessage.value.length == 0 ) return;
             var topic = device_id+'/in/write';
-            var commond = '{"11":"' + inputMessage.value + '"}';
+            var commond = '{"uart_send":"' + inputMessage.value + '"}';
             client.publish(topic, commond);
             console.log(inputMessage.value);
             inputMessage.value = '';
@@ -159,32 +164,49 @@
         // document.querySelector('#led_off').addEventListener('touchstart', led_off);
         document.querySelector('#led_off').addEventListener('click', led_off);
 
+        // play step stop
         function flm_play() {
             var topic = device_id+'/in/write';
-            //var commond = '{"rgbled_switch":true,"rgbled_hues":0, "rgbled_saturation":100, "rgbled_brightness":100}'; 
-            var commond = '{"rgbled_switch":true,"rgbled_hues":120, "rgbled_saturation":100, "rgbled_brightness":100, "flm_control":1}';
+            var commond = '{"rgbled_hues":120, "rgbled_saturation":100, "rgbled_brightness":100, "flm_control":1}';
             client.publish(topic, commond);
         }
-        // document.querySelector('#flm_play').addEventListener('touchstart', flm_play);
         document.querySelector('#flm_play').addEventListener('click', flm_play);
 
         function flm_step() {
             var topic = device_id+'/in/write';
-            //var commond = '{"rgbled_switch":true,"rgbled_hues":120, "rgbled_saturation":100, "rgbled_brightness":100}'; 
-            var commond = '{"rgbled_switch":true,"rgbled_hues":240, "rgbled_saturation":100, "rgbled_brightness":100, "flm_control":32}';
+            var commond = '{"rgbled_hues":240, "rgbled_saturation":100, "rgbled_brightness":100, "flm_control":32}';
             client.publish(topic, commond);
         }
-        // document.querySelector('#flm_step').addEventListener('touchstart', flm_step);
         document.querySelector('#flm_step').addEventListener('click', flm_step);
 
         function flm_stop() {
             var topic = device_id+'/in/write';
-            //var commond = '{"rgbled_switch":true,"rgbled_hues":240, "rgbled_saturation":100, "rgbled_brightness":100}'; 
-            var commond = '{"rgbled_switch":true,"rgbled_hues":0, "rgbled_saturation":100, "rgbled_brightness":100, "flm_control":2}';
+            var commond = '{"rgbled_hues":0, "rgbled_saturation":100, "rgbled_brightness":100, "flm_control":2}';
             client.publish(topic, commond);
         }
-        // document.querySelector('#flm_stop').addEventListener('touchstart', flm_stop);
         document.querySelector('#flm_stop').addEventListener('click', flm_stop);
+        
+        // 10min 15min 20min
+        function time_1() {
+            var topic = device_id+'/in/write';
+            var commond = '{"rgbled_hues":120, "rgbled_saturation":100, "rgbled_brightness":100, "flm_control":256}';
+            client.publish(topic, commond);
+        }
+        document.querySelector('#time_1').addEventListener('click', time_1);
+
+        function time_2() {
+            var topic = device_id+'/in/write';
+            var commond = '{"rgbled_hues":120, "rgbled_saturation":100, "rgbled_brightness":100, "flm_control":512}';
+            client.publish(topic, commond);
+        }
+        document.querySelector('#time_2').addEventListener('click', time_2);
+
+        function time_3() {
+            var topic = device_id+'/in/write';
+            var commond = '{"rgbled_hues":120, "rgbled_saturation":100, "rgbled_brightness":100, "flm_control":1024}';
+            client.publish(topic, commond);
+        }
+        document.querySelector('#time_3').addEventListener('click', time_3);
     }
 
     // 日志打印在页面的部分    
